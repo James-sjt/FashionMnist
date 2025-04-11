@@ -70,3 +70,11 @@ Best Accuracy: 0.9310, parameters saved!
 3. To draw the heatmap. The heatmap will be saved in FashionMnist/HeapImg
 ```bash
 python Visulization.py
+```
+
+Some examples of visulization:
+![b5326dbe7ec4142e7fd14ddb1c51dcc0](https://github.com/user-attachments/assets/b5295e8c-1ea2-435b-afe4-5f7fd29c5114)
+![9d1b0261206ab07647162ba44d2c4797](https://github.com/user-attachments/assets/421a2f79-8417-4c8c-9d0e-cde99f286b2c)
+![91367f9e5f2eba7ed33c0b90324dd5f1](https://github.com/user-attachments/assets/4ffaebe6-f172-4ac9-b09f-41500ddcfe68)
+![919719b166d524266f26ca062e6860b9](https://github.com/user-attachments/assets/0c27846a-1967-4618-b509-10a081df5221)
+![4c9c259b6bcad0a7ded406632b495dc2](https://github.com/user-attachments/assets/60c7c55a-1ea3-45cd-a6be-17587b022786)

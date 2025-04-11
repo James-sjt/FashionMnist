@@ -16,7 +16,7 @@ Finally, Grad-CAM is used to visualize and interpret the model’s decision-maki
 $ git clone https://github.com/James-sjt/FashionMnist.git
 ```
 
-2. Train this model. If you want to change the default parameter, go to train.py Model97.pth is the already trained parameters.
+2. Train this model. If you want to change the default parameter, go to train.py And Model_97.pth is the already trained parameters.
 ```bash
 $ cd FashionMnist
 $ python train.py

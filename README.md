@@ -1,23 +1,3 @@
-# 📘 Introduction
-
-This is a lightweight hybrid model of CNN and Transformer, which only have 600k parameters and achieves 93.1% accuracy on Fasion Mnist Dataset. 
-
----
-
-## 📝 目录
-
-- [Introduction](#Introduction)
-- [功能特点](#功能特点)
-- [安装方法](#安装方法)
-- [使用方法](#使用方法)
-- [项目结构](#项目结构)
-- [模型训练 / 数据使用（可选）](#模型训练--数据使用可选)
-- [贡献方式](#贡献方式)
-- [许可证](#许可证)
-- [致谢](#致谢)
-
----
-
 ## 📖 Project Introduction
 
 Fashion-MNIST is a dataset of Zalando's article images, consisting of 60,000 training examples and 10,000 test examples. Each example is a 28x28 grayscale image associated with one of 10 fashion categories.
@@ -29,18 +9,64 @@ Finally, Grad-CAM is used to visualize and interpret the model’s decision-maki
 
 ---
 
-## ✨ 功能特点
+## 🛠️ How to implement?
 
-- ✅ 数据预处理与加载  
-- ✅ 模型训练与验证  
-- ✅ Grad-CAM 可视化  
-- ✅ 支持 CLI 参数配置  
-- ✅ 支持 CPU/GPU  
-
----
-
-## 🛠️ How to install?
-
+1. Clone this project.
 ```bash
 git clone https://github.com/James-sjt/FashionMnist.git
+```
+
+2. Train this model. If you want to change the default parameter, go to train.py
+```bash
 cd FashionMnist
+python train.py
+```
+**************************************************
+EPOCH: 97, result on training set:
+              precision    recall  f1-score   support
+
+           0       0.89      0.90      0.90      6000
+           1       1.00      0.99      1.00      6000
+           2       0.90      0.91      0.90      6000
+           3       0.93      0.95      0.94      6000
+           4       0.90      0.90      0.90      6000
+           5       0.99      0.99      0.99      6000
+           6       0.83      0.80      0.82      6000
+           7       0.96      0.97      0.97      6000
+           8       0.99      0.99      0.99      6000
+           9       0.98      0.97      0.97      6000
+
+    accuracy                           0.94     60000
+   macro avg       0.94      0.94      0.94     60000
+weighted avg       0.94      0.94      0.94     60000
+
+Mean of Loss: 0.0839, current lr: 0.0000
+**************************************************
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10000/10000 [00:17<00:00, 577.12it/s]
+**************************************************
+EPOCH: 97, result on testing set:
+              precision    recall  f1-score   support
+
+           0       0.88      0.87      0.88      1000
+           1       0.98      0.99      0.99      1000
+           2       0.90      0.91      0.91      1000
+           3       0.94      0.92      0.93      1000
+           4       0.89      0.91      0.90      1000
+           5       0.99      0.98      0.99      1000
+           6       0.81      0.79      0.80      1000
+           7       0.96      0.98      0.97      1000
+           8       0.99      0.99      0.99      1000
+           9       0.97      0.96      0.97      1000
+
+    accuracy                           0.93     10000
+   macro avg       0.93      0.93      0.93     10000
+weighted avg       0.93      0.93      0.93     10000
+
+Mean of Loss: 0.2000
+Best Accuracy: 0.9310, parameters saved!
+**************************************************
+
+
+3. To draw the heatmap. The heatmap will be saved in FashionMnist/HeapImg
+```bash
+python Visulization.py

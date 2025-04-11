@@ -13,13 +13,13 @@ Finally, Grad-CAM is used to visualize and interpret the model’s decision-maki
 
 1. Clone this project.
 ```bash
-git clone https://github.com/James-sjt/FashionMnist.git
+$ git clone https://github.com/James-sjt/FashionMnist.git
 ```
 
 2. Train this model. If you want to change the default parameter, go to train.py
 ```bash
-cd FashionMnist
-python train.py
+$ cd FashionMnist
+$ python train.py
 ```
 **************************************************
 EPOCH: 97, result on training set:
@@ -69,7 +69,7 @@ Best Accuracy: 0.9310, parameters saved!
 
 3. To draw the heatmap. The heatmap will be saved in FashionMnist/HeapImg
 ```bash
-python Visulization.py
+$ python Visulization.py
 ```
 
 Some examples of visulization:

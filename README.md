@@ -18,11 +18,14 @@ This is a lightweight hybrid model of CNN and Transformer, which only have 600k 
 
 ---
 
-## 📖 项目简介
+## 📖 Project Introduction
 
-简要说明该项目的背景、目的以及解决的问题。
+Fashion-MNIST is a dataset of Zalando's article images, consisting of 60,000 training examples and 10,000 test examples. Each example is a 28x28 grayscale image associated with one of 10 fashion categories.
 
-> 本项目使用 CNN 模型对 FashionMNIST 数据集进行图像分类，支持训练、测试和可视化分析（如 Grad-CAM）。
+This project builds a hybrid model combining CNN and Transformer architectures. Specifically, the CNN is used to extract local features, followed by a Transformer to capture global features. The model contains only about 600k parameters, making it lightweight and suitable for training on most devices. After 90 epochs of training, it achieves an impressive accuracy of 93.1%.
+
+Finally, Grad-CAM is used to visualize and interpret the model’s decision-making process by highlighting the important regions in the input image that influence predictions.
+
 
 ---
 

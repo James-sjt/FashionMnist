@@ -39,7 +39,7 @@ Finally, Grad-CAM is used to visualize and interpret the model’s decision-maki
 
 ---
 
-## 🛠️ 安装方法
+## 🛠️ How to install?
 
 ```bash
 git clone https://github.com/James-sjt/FashionMnist.git

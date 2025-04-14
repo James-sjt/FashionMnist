@@ -19,7 +19,7 @@ $ git clone https://github.com/James-sjt/FashionMnist.git
 ```bash
 pip install -r requirement.txt
 ```
-2. Train this model, using the default parameters.
+3. Train this model, using the default parameters.
 ```bash
 $ cd FashionMnist
 $ python train.py
@@ -103,7 +103,7 @@ Options:
   --pre_train=<bool>        Use pre-trained weights [default: False]
 ```
 
-3. To draw the heatmap. The heatmap will be saved in FashionMnist/HeapImg
+4. To draw the heatmap. The heatmap will be saved in FashionMnist/HeapImg
 ```bash
 $ python Visulization.py
 ```

@@ -17,7 +17,7 @@ $ git clone https://github.com/James-sjt/FashionMnist.git
 ```
 2. Install the requirement.
 ```bash
-pip install -r requirement.txt
+$ pip install -r requirement.txt
 ```
 3. Train this model, using the default parameters.
 ```bash

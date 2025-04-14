@@ -49,7 +49,7 @@ def main(model_config):
     print('Total parameters: ', sum(p.numel() for p in Model.parameters() if p.requires_grad))
 
     Loss = nn.CrossEntropyLoss()
-    optimizer = torch.optim.AdamW(Model.parameters(), lr=1e-3)
+    optimizer = torch.optim.AdamW(Model.parameters(), lr=model_config.lr)
     scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.5)
 
     data_train = DataLoader(FashionMNIST('train', device), batch_size=model_config.batch_size, shuffle=True)

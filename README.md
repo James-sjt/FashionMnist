@@ -67,7 +67,7 @@ Mean of Loss: 0.2000
 Best Accuracy: 0.9310, parameters saved!
 **************************************************
 ```
-If you want to change the default parameters, which include dim, depth, heads, dim_head, mlp_dim, batch_size and lr, you can run, eg:
+If you want to change the default parameters, which include dim, depth, heads, dim_head, mlp_dim, batch_size, lr and pre_train, you can run, eg:
 ```bash
 $ python train.py --depth=5 --lr=1e-4
 ```
@@ -85,7 +85,7 @@ Train this model.
 
 Usage:
   Train.py [--dim=<int>] [--depth=<int>] [--heads=<int>] [--dim_head=<int>]
-           [--mlp_dim=<int>] [--batch_size=<int>] [--lr=<float>]
+           [--mlp_dim=<int>] [--batch_size=<int>] [--lr=<float>] [--pre_train=<bool>]
   Train.py (-h | --help)
 
 Options:
@@ -97,6 +97,7 @@ Options:
   --mlp_dim=<int>          MLP layer dimension [default: 256]
   --batch_size=<int>       Batch size [default: 2]
   --lr=<float>             Learning rate [default: 1e-3]
+  --pre_train=<bool>        Use pre-trained weights [default: False]
 ```
 
 3. To draw the heatmap. The heatmap will be saved in FashionMnist/HeapImg

@@ -21,6 +21,7 @@ $ git clone https://github.com/James-sjt/FashionMnist.git
 $ cd FashionMnist
 $ python train.py
 ```
+```
 **************************************************
 EPOCH: 97, result on training set:
               precision    recall  f1-score   support
@@ -65,7 +66,29 @@ weighted avg       0.93      0.93      0.93     10000
 Mean of Loss: 0.2000
 Best Accuracy: 0.9310, parameters saved!
 **************************************************
+```
+If you need any help when training the model.
+```bash
+$ python train.py -h
+```
+```
+Train this model.
 
+Usage:
+  Train.py [--dim=<int>] [--depth=<int>] [--heads=<int>] [--dim_head=<int>]
+           [--mlp_dim=<int>] [--batch_size=<int>] [--lr=<float>]
+  Train.py (-h | --help)
+
+Options:
+  -h --help                 Show this screen.
+  --dim=<int>              Input feature dimension of Transformer [default: 128]
+  --depth=<int>            Number of Transformer blocks [default: 4]
+  --heads=<int>            Number of heads in Transformer [default: 4]
+  --dim_head=<int>         Dimension of each head [default: 32]
+  --mlp_dim=<int>          MLP layer dimension [default: 256]
+  --batch_size=<int>       Batch size [default: 2]
+  --lr=<float>             Learning rate [default: 1e-3]
+```
 
 3. To draw the heatmap. The heatmap will be saved in FashionMnist/HeapImg
 ```bash

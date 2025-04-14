@@ -15,7 +15,10 @@ Finally, Grad-CAM is used to visualize and interpret the model’s decision-maki
 ```bash
 $ git clone https://github.com/James-sjt/FashionMnist.git
 ```
-
+2. Install the requirement.
+```bash
+pip install -r requirement.txt
+```
 2. Train this model, using the default parameters.
 ```bash
 $ cd FashionMnist

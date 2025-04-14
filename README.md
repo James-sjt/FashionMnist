@@ -16,7 +16,7 @@ Finally, Grad-CAM is used to visualize and interpret the model’s decision-maki
 $ git clone https://github.com/James-sjt/FashionMnist.git
 ```
 
-2. Train this model. If you want to change the default parameter, go to train.py And Model_97.pth is the already trained parameters.
+2. Train this model, using the default parameters.
 ```bash
 $ cd FashionMnist
 $ python train.py
@@ -70,6 +70,10 @@ Best Accuracy: 0.9310, parameters saved!
 If you want to change the default parameters, which include dim, depth, heads, dim_head, mlp_dim, batch_size and lr, you can run, eg:
 ```bash
 $ python train.py --depth=5 --lr=1e-4
+```
+And you can also use pre-trained parameters:
+```bash
+$ python train.py --pre_train=True
 ```
 
 If you need any help when training the model.

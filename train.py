@@ -3,7 +3,7 @@ Train this model.
 
 Usage:
   Train.py [--dim=<int>] [--depth=<int>] [--heads=<int>] [--dim_head=<int>]
-           [--mlp_dim=<int>] [--batch_size=<int>] [--lr=<float>]
+           [--mlp_dim=<int>] [--batch_size=<int>] [--lr=<float>] [--pre_train=<bool>]
   Train.py (-h | --help)
 
 Options:
@@ -15,6 +15,7 @@ Options:
   --mlp_dim=<int>          MLP layer dimension [default: 256]
   --batch_size=<int>       Batch size [default: 2]
   --lr=<float>             Learning rate [default: 1e-3]
+  --pre_train=<bool>        Use pre-trained weights [default: False]
 """
 
 from Model import MODEL
@@ -27,14 +28,15 @@ from tqdm import tqdm
 from docopt import docopt
 
 class CONFIG:
-    def __init__(self, dim, depth, heads, dim_heads, mlp_dim, batch_size, lr):
-        self.dim = 128
-        self.depth = 4
-        self.heads = 4
-        self.dim_head = 32
-        self.mlp_dim = 256
-        self.batch_size = 2
-        self.lr = 1e-3
+    def __init__(self, dim, depth, heads, dim_heads, mlp_dim, batch_size, lr, pre_train):
+        self.dim = dim
+        self.depth = depth
+        self.heads = heads
+        self.dim_head = dim_heads
+        self.mlp_dim = mlp_dim
+        self.batch_size = batch_size
+        self.lr = lr
+        self.pre_train = pre_train
 
 
 def main(model_config):
@@ -45,6 +47,9 @@ def main(model_config):
                   model_config.heads,
                   model_config.dim_head,
                   model_config.mlp_dim).to(device)
+
+    if model_config.pre_train:
+        Model.load_state_dict(torch.load('Model_97.pth', map_location=device))
 
     print('Total parameters: ', sum(p.numel() for p in Model.parameters() if p.requires_grad))
 
@@ -116,7 +121,8 @@ if __name__ == '__main__':
         dim_heads = int(arguments["--dim_head"]),
         mlp_dim = int(arguments["--mlp_dim"]),
         batch_size = int(arguments["--batch_size"]),
-        lr = float(arguments["--lr"])
+        lr = float(arguments["--lr"]),
+        pre_train = bool(arguments["--pre_train"]),
     )
 
     main(model_config)

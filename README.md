@@ -69,7 +69,7 @@ Best Accuracy: 0.9310, parameters saved!
 ```
 If you want to change the default parameters, which include dim, depth, heads, dim_head, mlp_dim, batch_size and lr, you can run, eg:
 ```bash
-python train.py --depth=5 --lr=1e-4
+$ python train.py --depth=5 --lr=1e-4
 ```
 
 If you need any help when training the model.

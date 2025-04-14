@@ -1,0 +1,9 @@
+torch
+torchvision
+numpy
+docopt
+scikit-learn
+tqdm
+einops
+grad-cam
+opencv-python

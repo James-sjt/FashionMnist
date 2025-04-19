@@ -106,6 +106,7 @@ Options:
 
 4. To draw the heatmap. The heatmap will be saved in FashionMnist/HeapImg
 ```bash
+$ mkdir HeapImg
 $ python Visulization.py
 ```
 

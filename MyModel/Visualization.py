@@ -1,5 +1,8 @@
 from Model import MODEL
 import torch
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'utils')))
 from DataLoader import FashionMNIST
 from torch.utils.data import DataLoader
 import numpy as np

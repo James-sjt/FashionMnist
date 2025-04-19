@@ -8,13 +8,13 @@ import torch.nn as nn
 class FashionMNIST(Dataset):
     def __init__(self, dtype, device):
         if dtype == 'train':
-            self.data, self.labels = mnist_reader.load_mnist('data/fashion', kind='train')
+            self.data, self.labels = mnist_reader.load_mnist('../data/fashion', kind='train')
             self.transform = transforms.Compose([
                 transforms.RandomHorizontalFlip(),
                 transforms.RandomAffine(25, translate=(0.1, 0.1)),
             ])
         elif dtype == 'test':
-            self.data, self.labels = mnist_reader.load_mnist('data/fashion', kind='t10k')
+            self.data, self.labels = mnist_reader.load_mnist('../data/fashion', kind='t10k')
             self.transform = transforms.Compose([
                 nn.Identity()
             ])

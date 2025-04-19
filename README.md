@@ -22,6 +22,7 @@ $ pip install -r requirement.txt
 ```
 3. Train this model, using the default parameters.
 ```bash
+$ cd MyModel
 $ python train.py
 ```
 ```
@@ -114,3 +115,13 @@ Some examples of visulization:
 ![91367f9e5f2eba7ed33c0b90324dd5f1](https://github.com/user-attachments/assets/4ffaebe6-f172-4ac9-b09f-41500ddcfe68)
 ![919719b166d524266f26ca062e6860b9](https://github.com/user-attachments/assets/0c27846a-1967-4618-b509-10a081df5221)
 ![4c9c259b6bcad0a7ded406632b495dc2](https://github.com/user-attachments/assets/60c7c55a-1ea3-45cd-a6be-17587b022786)
+
+5. Comparisons to other models, eg. VGG16, ResNet50 and MobileNet
+```sh
+$ cd ../Experiments
+$ python <ModelName>.py
+```
+The model will use pre-trained parameters by default. If you want to change hyper-parameters, using:
+```sh
+$ python <ModelName>.py --batch_size=5 --lr=1e-4 --pre_train=False
+```

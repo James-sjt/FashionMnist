@@ -126,3 +126,20 @@ The model will use pre-trained parameters by default. If you want to change hype
 ```sh
 $ python <ModelName>.py --batch_size=5 --lr=1e-4 --pre_train=False
 ```
+If you need more help when doing experiment, run:
+```sh
+$ python <ModelName>.py -h
+```
+```sh
+Fine-tuning ResNet50.
+
+Usage:
+  Train.py [--batch_size=<int>] [--lr=<float>] [--pre_train=<bool>]
+  Train.py (-h | --help)
+
+Options:
+  -h --help                 Show this screen.
+  --batch_size=<int>       Batch size [default: 2]
+  --lr=<float>             Learning rate [default: 1e-3]
+  --pre_train=<bool>        Use pre-trained weights [default: True]
+```

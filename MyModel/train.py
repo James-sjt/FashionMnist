@@ -41,6 +41,12 @@ class CONFIG:
         self.lr = lr
         self.pre_train = pre_train
 
+def str2bool(s):
+  if s == 'True':
+    return True
+  elif s == 'False':
+    return False
+
 
 def main(model_config):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -125,7 +131,7 @@ if __name__ == '__main__':
         mlp_dim = int(arguments["--mlp_dim"]),
         batch_size = int(arguments["--batch_size"]),
         lr = float(arguments["--lr"]),
-        pre_train = bool(arguments["--pre_train"]),
+        pre_train = str2bool(arguments["--pre_train"]),
     )
 
     main(model_config)

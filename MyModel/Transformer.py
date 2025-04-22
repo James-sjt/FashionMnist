@@ -1,11 +1,5 @@
-import torch
 from torch import nn, einsum
 from einops import rearrange, repeat
-from einops.layers.torch import Rearrange
-
-
-def pair(t):
-    return t if isinstance(t, tuple) else (t, t)
 
 
 class PreNorm(nn.Module):

@@ -4,13 +4,13 @@ Fashion-MNIST is a dataset of Zalando's article images, consisting of 60,000 tra
 
 ## 🚀 Project Overview
 This project implements a lightweight hybrid model that combines Convolutional Neural Networks (CNNs) and Transformers to effectively capture both local and global features from the input images.
-
+---
 🧠 CNN: Extracts spatially local patterns.
-
+---
 🌐 Transformer: Captures long-range dependencies and contextual information.
-
+---
 ⚙️ Parameters: ~600k total — small enough for efficient training on most devices.
-
+---
 📈 Accuracy: Achieves 93.2% after 90 epochs of training.
 ---
 
@@ -116,7 +116,7 @@ Options:
 ## 🔍 Model Enhancements
 ✅ Self-Distillation (--dis)
 A self-distillation mechanism can be enabled using the dis parameter. This encourages the model to refine its own predictions by mimicking its own previous outputs, leading to enhanced feature extraction and improved generalization.
-
+---
 ✅ Frequency-Based Augmentation (--dft)
 When enabled via the dft parameter, the model uses high-pass filtering and Gaussian high-pass filtering to enhance edge features in the image. This augmentation strengthens the model’s ability to focus on discriminative patterns, improving performance especially in challenging scenarios.
 ---

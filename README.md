@@ -71,7 +71,7 @@ Mean of Loss: 0.2000
 Best Accuracy: 0.9310, parameters saved!
 **************************************************
 ```
-If you want to change the default parameters, which include dim, depth, heads, dim_head, mlp_dim, batch_size, lr and pre_train, you can run, eg:
+If you want to change the default parameters, which include dim, depth, heads, dim_head, mlp_dim, batch_size, lr, pre_train, pos_emb, self-distillation and dft, you can run, eg:
 ```bash
 $ python train.py --depth=5 --lr=1e-4
 ```
@@ -85,11 +85,12 @@ If you need any help when training the model.
 $ python train.py -h
 ```
 ```
+"""
 Train this model.
 
 Usage:
   Train.py [--dim=<int>] [--depth=<int>] [--heads=<int>] [--dim_head=<int>]
-           [--mlp_dim=<int>] [--batch_size=<int>] [--lr=<float>] [--pre_train=<bool>]
+           [--mlp_dim=<int>] [--batch_size=<int>] [--lr=<float>] [--pre_train=<bool>] [--pos_emb=<bool>] [--dis=<bool>] [--dft=<bool>]
   Train.py (-h | --help)
 
 Options:
@@ -102,6 +103,10 @@ Options:
   --batch_size=<int>       Batch size [default: 2]
   --lr=<float>             Learning rate [default: 1e-3]
   --pre_train=<bool>        Use pre-trained weights [default: False]
+  --pos_emb=<bool>         Use position embedding [default: False]
+  --dis=<bool>             Use self-distillation [default: False]
+  --dft=<bool>             Use high-pass filter to enhance images [default: False]
+"""
 ```
 
 4. To draw the heatmap. The heatmap will be saved in FashionMnist/HeapImg

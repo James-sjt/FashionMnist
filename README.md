@@ -11,7 +11,7 @@ This project implements a lightweight hybrid model that combines Convolutional N
 
 ⚙️ Parameters: ~600k total — small enough for efficient training on most devices.
 
-📈 Accuracy: Achieves 93.1% after 90 epochs of training.
+📈 Accuracy: Achieves 93.2% after 90 epochs of training.
 ---
 
 ## 🛠️ How to implement this model?
@@ -113,6 +113,14 @@ Options:
   --dft=<bool>             Use high-pass filter to enhance images [default: False]
 """
 ```
+## 🔍 Model Enhancements
+✅ Self-Distillation (--dis)
+A self-distillation mechanism can be enabled using the dis parameter. This encourages the model to refine its own predictions by mimicking its own previous outputs, leading to enhanced feature extraction and improved generalization.
+
+✅ Frequency-Based Augmentation (--dft)
+When enabled via the dft parameter, the model uses high-pass filtering and Gaussian high-pass filtering to enhance edge features in the image. This augmentation strengthens the model’s ability to focus on discriminative patterns, improving performance especially in challenging scenarios.
+---
+
 
 4. To draw the heatmap. The heatmap will be saved in FashionMnist/HeapImg
 ```bash
@@ -153,3 +161,23 @@ Options:
   --lr=<float>             Learning rate [default: 1e-3]
   --pre_train=<bool>        Use pre-trained weights [default: True]
 ```
+## 📊 Evaluation Tools
+Run Evaluation.py to visualize and compare training curves:
+
+📉 Loss curves
+
+📈 Accuracy curves
+
+🔄 Compare multiple models on the same graph
+
+```sh
+$ python Evalutation.py  # this is to compare Our Model to VGG16, MobileNet and ResNet50
+$ cd ../MyModel
+$ python Evaluation.py  # this is to visualize the effect of changing hyperparameters e.g.: initial learning rate, depth and heads
+```
+
+These plots help users intuitively understand the impact of different architectural choices or training strategies.
+![wechat_2025-06-11_014256_379](https://github.com/user-attachments/assets/6e3f4b5e-0acb-437e-a783-baf628e75b49)
+![wechat_2025-06-11_014342_014](https://github.com/user-attachments/assets/644f6118-8e0f-46f5-963c-afe8861a1a1b)
+
+---

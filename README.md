@@ -16,16 +16,16 @@ This project implements a lightweight hybrid model that combines Convolutional N
 
 ## 🛠️ How to implement this model?
 
-# 1. Clone this project.
+## Step 1. Clone this project.
 ```sh
 $ git clone https://github.com/James-sjt/FashionMnist.git
 ```
-# 2. Install the requirement.
+## Step 2. Install the requirement.
 ```bash
 $ cd FashionMnist
 $ pip install -r requirement.txt
 ```
-# 3. Train the simple model, using the default parameters.
+## Step 3. Train the simple model, using the default parameters.
 ```bash
 $ cd MyModel
 $ python train.py
@@ -120,7 +120,7 @@ Options:
   --dft=<bool>             Use high-pass filter to enhance images [default: False]
 """
 ```
-# 4. To draw the heatmap to directly visualize the region where the model pays attention to. The heatmap will be saved in FashionMnist/HeapImg
+## Step 4. To draw the heatmap to directly visualize the region where the model pays attention to. The heatmap will be saved in FashionMnist/HeapImg
 ```bash
 $ mkdir HeapImg
 $ python Visulization.py
@@ -133,7 +133,7 @@ Some examples of visulization:
 ![919719b166d524266f26ca062e6860b9](https://github.com/user-attachments/assets/0c27846a-1967-4618-b509-10a081df5221)
 ![4c9c259b6bcad0a7ded406632b495dc2](https://github.com/user-attachments/assets/60c7c55a-1ea3-45cd-a6be-17587b022786)
 
-# 5. Comparisons to other models using transfer learning, eg. VGG16, ResNet50 and MobileNet
+## Step 5. Comparisons to other models using transfer learning, eg. VGG16, ResNet50 and MobileNet
 ```sh
 $ cd ../Experiments
 $ python <ModelName>.py

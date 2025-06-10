@@ -25,7 +25,7 @@ $ git clone https://github.com/James-sjt/FashionMnist.git
 $ cd FashionMnist
 $ pip install -r requirement.txt
 ```
-3. Train this model, using the default parameters.
+3. Train the simple model, using the default parameters.
 ```bash
 $ cd MyModel
 $ python train.py
@@ -76,13 +76,20 @@ Mean of Loss: 0.2000
 Best Accuracy: 0.9310, parameters saved!
 **************************************************
 ```
-If you want to change the default parameters, which include dim, depth, heads, dim_head, mlp_dim, batch_size, lr, pre_train, pos_emb, self-distillation and dft, you can run, eg:
+## 🔍 Model Enhancements
+✅ Self-Distillation (--dis)
+A self-distillation mechanism can be enabled using the dis parameter. This encourages the model to refine its own predictions by mimicking its own previous outputs, leading to enhanced feature extraction and improved generalization.
+
+✅ Frequency-Based Augmentation (--dft)
+When enabled via the dft parameter, the model uses high-pass filtering and Gaussian high-pass filtering to enhance edge features in the image. This augmentation strengthens the model’s ability to focus on discriminative patterns, improving performance especially in challenging scenarios.
+
+If you want to change the default parameters, introduce data augmentation or use self-distillation to improve the model's performance you can run, eg:
 ```bash
-$ python train.py --depth=5 --lr=1e-4
+$ python train.py --dis=True --dft=True
 ```
-And you can also use pre-trained parameters:
+And you can also use pre-trained parameters, e.g.(train the model with self-distillation and Gaussian high-pass filter using pre-trained parameters):
 ```bash
-$ python train.py --pre_train=True
+$ python train.py --pre_train=True --dis=True --dft=True
 ```
 
 If you need any help when training the model.
@@ -113,16 +120,7 @@ Options:
   --dft=<bool>             Use high-pass filter to enhance images [default: False]
 """
 ```
-## 🔍 Model Enhancements
-✅ Self-Distillation (--dis)
-A self-distillation mechanism can be enabled using the dis parameter. This encourages the model to refine its own predictions by mimicking its own previous outputs, leading to enhanced feature extraction and improved generalization.
-
-✅ Frequency-Based Augmentation (--dft)
-When enabled via the dft parameter, the model uses high-pass filtering and Gaussian high-pass filtering to enhance edge features in the image. This augmentation strengthens the model’s ability to focus on discriminative patterns, improving performance especially in challenging scenarios.
-
-
-
-4. To draw the heatmap. The heatmap will be saved in FashionMnist/HeapImg
+4. To draw the heatmap to directly visualize the region where the model pays attention to. The heatmap will be saved in FashionMnist/HeapImg
 ```bash
 $ mkdir HeapImg
 $ python Visulization.py
@@ -135,7 +133,7 @@ Some examples of visulization:
 ![919719b166d524266f26ca062e6860b9](https://github.com/user-attachments/assets/0c27846a-1967-4618-b509-10a081df5221)
 ![4c9c259b6bcad0a7ded406632b495dc2](https://github.com/user-attachments/assets/60c7c55a-1ea3-45cd-a6be-17587b022786)
 
-5. Comparisons to other models, eg. VGG16, ResNet50 and MobileNet
+5. Comparisons to other models using transfer learning, eg. VGG16, ResNet50 and MobileNet
 ```sh
 $ cd ../Experiments
 $ python <ModelName>.py

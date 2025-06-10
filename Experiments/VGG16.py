@@ -36,16 +36,13 @@ class CONFIG:
 def main(model_config):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-    Model = models.vgg16(weights=False).to(device)
+    Model = models.vgg16(weights=pre_train).to(device)
     preprocess = transforms.Compose([
         transforms.Resize(256),
         transforms.CenterCrop(224),
     ])
 
     Model.classifier[6] = nn.Linear(4096, 10, device=device)
-
-    if model_config.pre_train:
-        Model.load_state_dict(torch.load('VGG16_73.pth', map_location=device))
 
     for name, p in Model.named_parameters():  # fine-tuning the last ffl of the classifier.
         if name != 'classifier.6.weight':

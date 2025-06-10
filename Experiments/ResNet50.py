@@ -36,7 +36,7 @@ class CONFIG:
 def main(model_config):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-    Model = models.resnet50(pretrained=False).to(device)
+    Model = models.resnet50(pretrained=pre_train).to(device)
     preprocess = transforms.Compose([
         transforms.Resize(256),
         transforms.CenterCrop(224),
@@ -44,9 +44,6 @@ def main(model_config):
 
 
     Model.fc = nn.Linear(2048,10, device=device)
-
-    if model_config.pre_train:
-        Model.load_state_dict(torch.load('ResNet50_91.pth', map_location=device))
 
     for name, p in Model.named_parameters():  # fine-tuning the last ffl of the classifier.
         if 'fc' not in name:

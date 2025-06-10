@@ -12,6 +12,16 @@ from pytorch_grad_cam import GradCAM
 from pytorch_grad_cam.utils.image import show_cam_on_image
 
 
+class TupleOutputWrapper(torch.nn.Module):
+    def __init__(self, model):
+        super().__init__()
+        self.model = model
+
+    def forward(self, x):
+        output = self.model(x)
+        return output[0]
+
+
 def transform_img(features, height=14, wide=14):
     b, l, d = features.shape
 
@@ -27,15 +37,21 @@ device = 'cpu'
 
 dim, depth, heads, dim_head, mlp_dim, batch_size = 128, 4, 4, 32, 256, 2
 
-Model = MODEL(dim, depth, heads, dim_head, mlp_dim).to(device)
+Model = MODEL(dim, depth, heads, dim_head, mlp_dim, False).to(device)
 
-Model.load_state_dict(torch.load('Model_97.pth', map_location=device))
+Model.load_state_dict(torch.load('Model_simple.pth', map_location=device))
 
-cam = GradCAM(model=Model, target_layers=[Model.transformer.layers[1][-1].fn.net[3]], reshape_transform=transform_img)
+wrapped_model = TupleOutputWrapper(Model)
+
+cam = GradCAM(
+    model=wrapped_model,
+    target_layers=[wrapped_model.model.transformer.layers[1][-1].fn.net[3]],
+    reshape_transform=transform_img
+)
 
 Model.eval()
 
-data_test = DataLoader(FashionMNIST('test', device), batch_size=1, shuffle=False)
+data_test = DataLoader(FashionMNIST('test', False, device), batch_size=1, shuffle=False)
 count = 0
 
 for batch in tqdm(data_test):

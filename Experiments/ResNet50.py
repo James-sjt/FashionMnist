@@ -24,6 +24,7 @@ from torch.utils.data import DataLoader
 from sklearn.metrics import classification_report
 from tqdm import tqdm
 from docopt import docopt
+import numpy as np
 
 
 class CONFIG:
@@ -32,22 +33,20 @@ class CONFIG:
         self.lr = lr
         self.pre_train = pre_train
 
-def str2bool(s):
-  if s == 'True':
-    return True
-  elif s == 'False':
-    return False
-
 def main(model_config):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-    Model = models.resnet50(pretrained=model_config.pre_train).to(device)
+    Model = models.resnet50(pretrained=False).to(device)
     preprocess = transforms.Compose([
         transforms.Resize(256),
         transforms.CenterCrop(224),
     ])
 
+
     Model.fc = nn.Linear(2048,10, device=device)
+
+    if model_config.pre_train:
+        Model.load_state_dict(torch.load('ResNet50_91.pth', map_location=device))
 
     for name, p in Model.named_parameters():  # fine-tuning the last ffl of the classifier.
         if 'fc' not in name:
@@ -59,8 +58,8 @@ def main(model_config):
     optimizer = torch.optim.AdamW(Model.parameters(), lr=model_config.lr)
     scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.5)
 
-    data_train = DataLoader(FashionMNIST('train', device), batch_size=model_config.batch_size, shuffle=True)
-    data_test = DataLoader(FashionMNIST('test', device), batch_size=1, shuffle=False)
+    data_train = DataLoader(FashionMNIST('train', False, device), batch_size=model_config.batch_size, shuffle=True)
+    data_test = DataLoader(FashionMNIST('test', False, device), batch_size=1, shuffle=False)
 
     best_acc = 0.
 
@@ -88,6 +87,11 @@ def main(model_config):
         print(f'Mean of Loss: {total_loss / 60000.:.4f}, current lr: {current_lr:.4f}')
         print('*' * 50)
 
+        report = classification_report(true_train, pre_train, output_dict=True)
+        resultofTrain = np.array([epoch + 1, report['accuracy'], total_loss / 60000.])
+        with open('trainResNet.txt', 'a') as f:
+            np.savetxt(f, resultofTrain.reshape(1, -1), fmt='%.4f')
+
         Model.eval()
 
         pre_test, true_test, total_loss = [], [], 0.
@@ -111,8 +115,11 @@ def main(model_config):
             best_acc = report['accuracy']
             print(f'Best Accuracy: {best_acc:.4f}, parameters saved!')
 
+        resultofVal = np.array([epoch + 1, report['accuracy'], total_loss / 10000.])
+        with open('ValidationResNet.txt', 'a') as f:
+            np.savetxt(f, resultofVal.reshape(1, -1), fmt='%.4f')
         print('*' * 50)
-
+        Model.train()
         for name, p in Model.named_parameters():  # fine-tuning the last ffl of the classifier.
             if 'fc' not in name:
                 p.requires_grad = False
@@ -123,7 +130,7 @@ if __name__ == '__main__':
     model_config = CONFIG(
         batch_size = int(arguments["--batch_size"]),
         lr = float(arguments["--lr"]),
-        pre_train = str2bool(arguments["--pre_train"]),
+        pre_train = bool(arguments["--pre_train"]),
     )
 
     main(model_config)

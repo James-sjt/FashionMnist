@@ -28,18 +28,23 @@ class CLASSIFIER(nn.Module):
         return x
 
 class MODEL(nn.Module):
-    def __init__(self, dim, depth, heads, dim_head, mlp_dim):
+    def __init__(self, dim, depth, heads, dim_head, mlp_dim, pos_emb):
         super().__init__()
         self.cnn = CNN()
         self.transformer = Transformer(dim, depth, heads, dim_head, mlp_dim)
         self.classifier = CLASSIFIER()
         self.cls_token = nn.Parameter(torch.zeros(1, 1, dim))
+        self.pos_emb = pos_emb
+        if pos_emb:
+            self.pos = nn.Parameter(torch.zeros(1, 197, 128))
 
     def forward(self, x):
         cnn_x = self.cnn(x)  # b, 128, 14, 14
         temp_x = cnn_x.view(cnn_x.size(0), cnn_x.size(1), -1)
         flatten_x = temp_x.permute(0, 2, 1)  # b, 196, 128
         cls_x = torch.cat((self.cls_token.expand(flatten_x.shape[0], -1, -1), flatten_x), 1)  # b, 197, 128
-        trans_x = self.transformer(cls_x)
+        if self.pos_emb:
+            cls_x = cls_x + self.pos
+        trans_x, steps = self.transformer(cls_x)
         out_x = self.classifier(trans_x[:, 0])
-        return out_x
+        return out_x, steps

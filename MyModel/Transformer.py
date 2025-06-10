@@ -1,5 +1,5 @@
 from torch import nn, einsum
-from einops import rearrange, repeat
+from einops import rearrange
 
 
 class PreNorm(nn.Module):
@@ -70,7 +70,9 @@ class Transformer(nn.Module):
             ]))
 
     def forward(self, x):
+        steps = []
         for attn, ff in self.layers:
             x = attn(x) + x
             x = ff(x) + x
-        return x
+            steps.append(x[:, 0])
+        return x, steps

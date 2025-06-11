@@ -48,8 +48,11 @@ def main(model_config):
         if 'classifier' not in name:
             p.requires_grad = False
 
+    # Load pre-trained parameter from huggingface
     if model_config.pre_train:
-        Model.load_state_dict(torch.load('MobileNet_45.pth', map_location=device))
+        url = "https://huggingface.co/James0323/FashionMnist/resolve/main/MobileNet_45.pth"
+        state_dict = torch.hub.load_state_dict_from_url(url, map_location=model_config.device)
+        Model.load_state_dict(state_dict)
 
     print('Total parameters which require trace gradient: ', sum(p.numel() for p in Model.parameters() if p.requires_grad))
 

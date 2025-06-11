@@ -51,7 +51,7 @@ def main(model_config):
     # Load pre-trained parameter from huggingface
     if model_config.pre_train:
         url = "https://huggingface.co/James0323/FashionMnist/resolve/main/VGG16_73.pth"
-        state_dict = torch.hub.load_state_dict_from_url(url, map_location=model_config.device)
+        state_dict = torch.hub.load_state_dict_from_url(url, map_location=device)
         Model.load_state_dict(state_dict)
 
     print('Total parameters which require trace gradient: ', sum(p.numel() for p in Model.parameters() if p.requires_grad))

@@ -36,8 +36,11 @@ class FashionMNIST(Dataset):
         temp = [0.] * 10
         temp[int(self.labels[index])] = 1.
         label = torch.tensor(temp, dtype=torch.float32)
-        if self.dft:
-            inhanceData = gaussian_high_pass_filter(self.data[index])
+        if self.dft == 'True':
+            if self.dft == 'Gaussian':
+                inhanceData = gaussian_high_pass_filter(self.data[index])
+            else:
+                inhanceData = high_pass_filter(self.data[index])
             inhanceData = torch.tensor(inhanceData, dtype=torch.float32)
             inhanceData = torch.unsqueeze(inhanceData, 0)
             return self.transform(inhanceData).to(self.device), label.to(self.device)
@@ -45,7 +48,7 @@ class FashionMNIST(Dataset):
             return self.transform(self.data[index]).to(self.device), label.to(self.device)
 
 
-def high_pass_filter(img, radius=4):
+def high_pass_filter(img, radius=20):
     f = np.fft.fft2(img)
     fshift = np.fft.fftshift(f)
     rows, cols = img.shape

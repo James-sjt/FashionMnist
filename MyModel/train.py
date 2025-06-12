@@ -170,7 +170,7 @@ if __name__ == '__main__':
         pre_train = str2bool(arguments["--pre_train"]),
         pos_emb = str2bool(arguments["--pos_emb"]),
         dis = str2bool(arguments["--dis"]),
-        dft=str2bool(arguments["--dft"]),
+        dft=arguments["--dft"],
     )
 
     main(model_config)

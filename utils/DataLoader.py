@@ -25,7 +25,7 @@ class FashionMNIST(Dataset):
         self.dft = dft
         self.labels = torch.tensor(self.labels, dtype=torch.float32)
         self.device = device
-        if not self.dft:
+        if self.dft == 'False':
             self.data = torch.tensor(self.data, dtype=torch.float32)
             self.data = torch.unsqueeze(self.data, 1)
 

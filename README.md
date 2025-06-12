@@ -81,7 +81,7 @@ Best Accuracy: 0.9310, parameters saved!
 A self-distillation mechanism can be enabled using the dis parameter. This encourages the model to refine its own predictions by mimicking its own previous outputs, leading to enhanced feature extraction and improved generalization.
 
 ✅ Frequency-Based Augmentation (--dft)
-When enabled via the dft parameter, the model uses high-pass filtering and Gaussian high-pass filtering to enhance edge features in the image. This augmentation strengthens the model’s ability to focus on discriminative patterns, improving performance especially in challenging scenarios.
+When enabled via the dft parameter, the model uses high-pass filtering and Gaussian high-pass filtering to enhance edge features in the image. This augmentation strengthens the model’s ability to focus on discriminative patterns, improving performance especially in challenging scenarios. If you want to use high-pass filter set --dft=True, while using Gaussian high-pass filter set --dft=Gaussian.
 
 If you want to change the default parameters, introduce data augmentation or use self-distillation to improve the model's performance you can run, eg:
 ```bash
@@ -89,7 +89,7 @@ $ python train.py --dis=True --dft=True
 ```
 And you can also use pre-trained parameters, e.g.(train the model with self-distillation and Gaussian high-pass filter using pre-trained parameters):
 ```bash
-$ python train.py --pre_train=True --dis=True --dft=True
+$ python train.py --pre_train=True --dis=Gaussian --dft=True
 ```
 
 If you need any help when training the model.

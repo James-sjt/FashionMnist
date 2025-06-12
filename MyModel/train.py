@@ -68,12 +68,14 @@ def main(model_config):
                   model_config.pos_emb).to(device)
 
     if model_config.pre_train:
-        if model_config.dis and model_config.dft:
+        if model_config.dis and model_config.dft == 'True':
             Model.load_state_dict(torch.load('Model_dis_dft.pth', map_location=device))
-        elif model_config.dis and not model_config.dft:
+        elif model_config.dis and model_config.dft == 'False':
             Model.load_state_dict(torch.load('Model_dis.pth', map_location=device))
-        elif not model_config.dis and not model_config.dft:
+        elif not model_config.dis and model_config.dft == 'False':
             Model.load_state_dict(torch.load('Model_simple.pth', map_location=device))
+        elif not model_config.dis and model_config.dft == 'Gaussian':
+            Model.load_state_dict(torch.load('Model_dis_Gaussian.pth', map_location=device))
         else:
             raise ValueError('No pre-trained weights, set pre_train to False!')
 

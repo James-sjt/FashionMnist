@@ -183,10 +183,15 @@ These plots help users intuitively understand the impact of different architectu
 $ cd ../Experiments
 $ python modelInference.py
 ```
-
+Confusion Matrix and ROC-curve of VGG16:
 ![wechat_2025-06-12_112432_684](https://github.com/user-attachments/assets/7d2056fb-8e94-4e39-a09f-1dc010de9274)
+![wechat_2025-06-12_122213_004](https://github.com/user-attachments/assets/3b0f0d56-9c4c-4043-bf9d-74bc9011ffff)
+Confusion Matrix and ROC-curve of ResNet50:
 ![wechat_2025-06-12_112748_093](https://github.com/user-attachments/assets/34c1f885-2d75-4dca-801a-b8cc0663d4ca)
+![wechat_2025-06-12_122345_198](https://github.com/user-attachments/assets/0190e378-e2b5-4dd2-a605-2f9b46537667)
+Confusion Matrix and ROC-curve of MobileNet:
 ![wechat_2025-06-12_113048_107](https://github.com/user-attachments/assets/d8d93e6c-1e5e-4491-b807-cd40f66c3328)
+![wechat_2025-06-12_122047_371](https://github.com/user-attachments/assets/ef221617-d870-4d42-8546-c3b434b0fff3)
 
 📉 Confusion matrix and ROC-curve for our model
 ```sh
@@ -195,3 +200,4 @@ $ python modelInference.py
 ```
 ![wechat_2025-06-12_114940_572](https://github.com/user-attachments/assets/368937ed-68d1-43c3-8500-62cb67c7894b)
 ![wechat_2025-06-12_120645_809](https://github.com/user-attachments/assets/8db69568-82b1-4f02-8a1f-2f1329101207)
+

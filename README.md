@@ -178,3 +178,11 @@ These plots help users intuitively understand the impact of different architectu
 ![wechat_2025-06-11_014256_379](https://github.com/user-attachments/assets/6e3f4b5e-0acb-437e-a783-baf628e75b49)
 ![wechat_2025-06-11_014342_014](https://github.com/user-attachments/assets/644f6118-8e0f-46f5-963c-afe8861a1a1b)
 
+📉 Confusion matrices
+```sh
+$ cd ../Experiments
+$ python modelInference.py
+```
+![wechat_2025-06-12_112132_333](https://github.com/user-attachments/assets/0120ed9d-7b0a-4caf-b395-e04a3ecbc273)
+![wechat_2025-06-12_112432_684](https://github.com/user-attachments/assets/7d2056fb-8e94-4e39-a09f-1dc010de9274)
+![wechat_2025-06-12_112748_093](https://github.com/user-attachments/assets/34c1f885-2d75-4dca-801a-b8cc0663d4ca)

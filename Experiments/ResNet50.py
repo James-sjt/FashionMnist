@@ -61,8 +61,8 @@ def main(model_config):
     optimizer = torch.optim.AdamW(Model.parameters(), lr=model_config.lr)
     scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.5)
 
-    data_train = DataLoader(FashionMNIST('train', False, device), batch_size=model_config.batch_size, shuffle=True)
-    data_test = DataLoader(FashionMNIST('test', False, device), batch_size=1, shuffle=False)
+    data_train = DataLoader(FashionMNIST('train', 'False', device), batch_size=model_config.batch_size, shuffle=True)
+    data_test = DataLoader(FashionMNIST('test', 'False', device), batch_size=1, shuffle=False)
 
     best_acc = 0.
 
